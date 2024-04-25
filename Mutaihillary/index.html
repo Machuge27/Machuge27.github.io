@@ -494,12 +494,20 @@
 
     form.addEventListener('submit', e => {
         e.preventDefault()
-        const data =  new FormData(form)
+        const name = document.getElementById('nameInput').value;
+        const email = document.getElementById('emailInput').value;
+        const message = document.getElementById('messageInput').value;
+        
+        const data = {
+            "Name": name,
+            "Email": email,
+            "Message": message
+        }
         console.log(data);
         fetch(scriptURL, {
             method: 'POST', body : data
         })
-            .then(response => console.log('Success!', response))
+            .then(response => console.log('Success!'+ data))
             .catch(error => console.error('Error!', error.message))
     })
 </script>

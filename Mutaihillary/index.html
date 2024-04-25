@@ -494,8 +494,10 @@
 
     form.addEventListener('submit', e => {
         e.preventDefault()
+        const data =  new FormData(form)
+        console.log(data);
         fetch(scriptURL, {
-            method: 'POST', body: new FormData(form)
+            method: 'POST', body : data
         })
             .then(response => console.log('Success!', response))
             .catch(error => console.error('Error!', error.message))

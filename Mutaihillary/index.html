@@ -566,6 +566,33 @@
     }
 
     showDits();
+    document.querySelector('#sendButton').addEventListener('click', function () {
+        var name = document.getElementById('nameInput').value;
+        var email = document.getElementById('emailInput').value;
+        var message = document.getElementById('messageInput').value;   
+        if (name.trim() === '' || email.trim() === '' || message.trim() === ''){
+            alert("Please fill in all fields!!");
+            return;
+        }  
+        else {
+            var data = {
+                "message": name,
+                "email": email,
+                "message": message
+            }  
+            console.log(data);
+            fetch("api/test/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": 'application/json'
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response.ok => {response.json()})
+            .then(
+                console.log(response['message']);
+            )
+    });
     //   document.getElementById('sendButton').addEventListener('click', function () {
     //       // Get input field values
     //       var name = document.getElementById('nameInput').value;

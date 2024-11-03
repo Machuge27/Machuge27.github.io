@@ -495,21 +495,22 @@
 
     form.addEventListener('submit', e => {
         e.preventDefault()
-        const name = document.getElementById('nameInput').value;
-        const email = document.getElementById('emailInput').value;
-        const message = document.getElementById('messageInput').value;
+        document.querySelector('#sendButton').click();
+        // const name = document.getElementById('nameInput').value;
+        // const email = document.getElementById('emailInput').value;
+        // const message = document.getElementById('messageInput').value;
         
-        const data = {
-            "Name": name,
-            "Email": email,
-            "Message": message
-        }
-        console.log("Sent data:" + data.Name + data.Email + data.Message);
-        fetch(scriptURL, {
-            method: 'POST', body : data
-        })
-            .then(response => console.log('Success!'+ data))
-            .catch(error => console.error('Error!', error.message))
+        // const data = {
+        //     "Name": name,
+        //     "Email": email,
+        //     "Message": message
+        // }
+        // console.log("Sent data:" + data.Name + data.Email + data.Message);
+        // fetch(scriptURL, {
+        //     method: 'POST', body : data
+        // })
+        //     .then(response => console.log('Success!'+ data))
+        //     .catch(error => console.error('Error!', error.message))
     })
 </script>
 <script>
@@ -589,9 +590,10 @@
                 body: JSON.stringify(data),
             })
             .then(response.ok => {response.json()})
-            .then(
+            .then(response => {
                 console.log(response['message']);
-            )
+            })
+            .catch(error => console.error('Error!', error.message))
     });
     //   document.getElementById('sendButton').addEventListener('click', function () {
     //       // Get input field values

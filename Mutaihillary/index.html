@@ -585,17 +585,23 @@
             }  
             console.log(data);
             fetch("https://mutaihillary27.pythonanywhere.com/api/test", {
-                method: "POST",
-                headers: {
-                    "Content-Type": 'application/json'
-                },
-                body: JSON.stringify(data),
-            })
-            .then(response.ok => {response.json()})
-            .then(response => {
-                console.log(response['message']);
-            })
-            .catch(error => console.error('Error!', error.message))
+    method: "POST",
+    headers: {
+        "Content-Type": 'application/json'
+    },
+    body: JSON.stringify(data),
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+})
+.then(responseData => {
+    console.log(responseData['message']);
+})
+.catch(error => console.error('Error!', error.message));
+
     });
     //   document.getElementById('sendButton').addEventListener('click', function () {
     //       // Get input field values

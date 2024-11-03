@@ -495,6 +495,7 @@
 
     form.addEventListener('submit', e => {
         e.preventDefault()
+        console.log("clicked");
         document.querySelector('#sendButton').click();
         // const name = document.getElementById('nameInput').value;
         // const email = document.getElementById('emailInput').value;
@@ -568,6 +569,7 @@
 
     showDits();
     document.querySelector('#sendButton').addEventListener('click', function () {
+        console.log("sending");
         var name = document.getElementById('nameInput').value;
         var email = document.getElementById('emailInput').value;
         var message = document.getElementById('messageInput').value;   
